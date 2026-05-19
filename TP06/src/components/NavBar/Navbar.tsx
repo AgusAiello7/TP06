@@ -14,11 +14,11 @@ const Navbar = ({ activeView: _activeView, onNavigate }: NavbarProps) => {
           <span className={styles.logoText}>Catsgram</span>
         </button>
 
-        <div className={styles.searchWrapper}>
+        <div className={styles.buscador}>
           <input
             type="text"
             placeholder="Buscar michis..."
-            className={styles.searchInput}
+            className={styles.buscarInput}
             aria-label="Buscar"
           />
         </div>
@@ -29,7 +29,6 @@ const Navbar = ({ activeView: _activeView, onNavigate }: NavbarProps) => {
           <button className={styles.iconBtn} aria-label="Mensajes">✈️</button>
           <button
             className={styles.newPostBtn}
-            onClick={() => onNavigate('profile')}
             aria-label="Nueva publicación"
           >
             ⊕ New Post

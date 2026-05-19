@@ -1,0 +1,137 @@
+.sidebar {
+  width: 240px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: sticky;
+  top: 60px;
+  height: calc(100vh - 60px);
+  overflow-y: auto;
+}
+
+/* ── Profile section ── */
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px 16px 20px;
+  gap: 8px;
+}
+
+.avatarBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  border-radius: 50%;
+}
+
+.avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid transparent;
+  background:
+    linear-gradient(var(--bg-main), var(--bg-main)) padding-box,
+    var(--gradient-ig) border-box;
+  transition: opacity 0.2s;
+}
+
+.avatarBtn:hover .avatar {
+  opacity: 0.85;
+}
+
+.name {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.fullName {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.verified {
+  font-size: 14px;
+  color: #405de6;
+}
+
+.username {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.stats {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.stat {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 6px 14px;
+}
+
+.statIcon {
+  font-size: 14px;
+}
+
+.statValue {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* ── Nav menu ── */
+.nav {
+  display: flex;
+  flex-direction: column;
+  margin-top: 8px;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 14px 24px;
+  border-radius: 0;
+  color: var(--text-secondary);
+  font-size: 16px;
+  font-weight: 400;
+  border-left: 3px solid transparent;
+  transition: background-color 0.15s, color 0.15s;
+  width: 100%;
+  text-align: left;
+}
+
+.navItem:hover {
+  background-color: var(--bg-card);
+  color: var(--text-primary);
+}
+
+.navItem.active {
+  color: var(--text-primary);
+  font-weight: 700;
+  background-color: var(--bg-card);
+  border-left-color: #c1358a;
+}
+
+.navIcon {
+  font-size: 22px;
+  width: 28px;
+  text-align: center;
+}
+
+.navLabel {
+  font-size: 16px;
+}

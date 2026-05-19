@@ -1,0 +1,155 @@
+.profile {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 24px 0;
+}
+
+/* ── Header ── */
+.header {
+  display: flex;
+  align-items: flex-start;
+  gap: 48px;
+  padding: 0 16px;
+}
+
+.avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 3px solid transparent;
+  background:
+    linear-gradient(var(--bg-main), var(--bg-main)) padding-box,
+    var(--gradient-ig) border-box;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex: 1;
+}
+
+.topRow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.username {
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--text-primary);
+}
+
+.editBtn {
+  padding: 6px 16px;
+  border-radius: 8px;
+  background-color: var(--bg-button);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  font-size: 14px;
+  font-weight: 600;
+  font-family: var(--font-main);
+  transition: background-color 0.15s;
+}
+
+.editBtn:hover {
+  background-color: var(--border-color);
+}
+
+/* Stats */
+.stats {
+  display: flex;
+  gap: 32px;
+}
+
+.stat {
+  display: flex;
+  gap: 4px;
+  align-items: baseline;
+}
+
+.statNumber {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.statLabel {
+  font-size: 15px;
+  color: var(--text-primary);
+}
+
+/* Bio */
+.bio {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.fullName {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.bioText {
+  font-size: 14px;
+  color: var(--text-primary);
+  line-height: 1.4;
+}
+
+/* Divider */
+.divider {
+  border: none;
+  border-top: 1px solid var(--border-color);
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+}
+
+.tabActive {
+  font-size: 13px;
+  font-weight: 700;
+  font-family: var(--font-main);
+  color: var(--text-primary);
+  letter-spacing: 1px;
+  padding: 8px 0;
+  border-top: 2px solid var(--text-primary);
+  background: none;
+}
+
+/* Grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3px;
+}
+
+.gridItem {
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background-color: var(--bg-card);
+  padding: 0;
+  border: none;
+  cursor: pointer;
+}
+
+.gridImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.2s;
+}
+
+.gridItem:hover .gridImage {
+  opacity: 0.8;
+}

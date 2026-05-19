@@ -1,20 +1,15 @@
-import { useState } from 'react'
 import type { Post } from '../../types'
 import styles from './PostCard.module.css'
 
 interface PostCardProps {
   post: Post
+  liked: boolean
+  onToggleLike: (postId: string) => void
   onSelect: (post: Post) => void
 }
 
-const PostCard = ({ post, onSelect }: PostCardProps) => {
-  const [liked, setLiked] = useState(false)
-  const [likes, setLikes] = useState(post.likes)
-
-  const handleLike = () => {
-    setLiked((prev) => !prev)
-    setLikes((prev) => (liked ? prev - 1 : prev + 1))
-  }
+const PostCard = ({ post, liked, onToggleLike, onSelect }: PostCardProps) => {
+  const likesCount = liked ? post.likes + 1 : post.likes
 
   return (
     <article className={styles.card}>
@@ -41,7 +36,7 @@ const PostCard = ({ post, onSelect }: PostCardProps) => {
 
       <div className={styles.actions}>
         <div className={styles.leftActions}>
-          <button onClick={handleLike} className={styles.actionBtn} aria-label="Me gusta">
+          <button onClick={() => onToggleLike(post.id)} className={styles.actionBtn} aria-label="Me gusta">
             {liked ? '❤️' : '🤍'}
           </button>
           <button className={styles.actionBtn} onClick={() => onSelect(post)} aria-label="Comentarios">
@@ -55,12 +50,12 @@ const PostCard = ({ post, onSelect }: PostCardProps) => {
       </div>
 
       <div className={styles.info}>
-        <span className={styles.likes}>{likes.toLocaleString('es-AR')} Likes</span>
+        <span className={styles.likes}>{likesCount.toLocaleString('es-AR')} me gusta</span>
         <p className={styles.caption}>
           <strong>{post.username}</strong> {post.caption}
         </p>
         <button className={styles.viewComments} onClick={() => onSelect(post)}>
-          Ver  {post.comments.length} comentarios
+          Ver los {post.comments.length} comentarios
         </button>
         <span className={styles.date}>{post.date}</span>
       </div>

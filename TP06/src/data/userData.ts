@@ -1,11 +1,11 @@
 import type { User } from "../types";
 
 export const currentUser: User = {
-  username: "miau_lover",
-  fullName: "Cat Enthusiast",
-  bio: "🐱 Amante de los gatos | Fotógrafa felina",
-  avatar: "https://i.pravatar.cc/150?img=47",
+  username: "Señora M",
+  fullName: "Facunda Eusebich",
+  bio: "🐱 Amante de los gatos | Y d lor Mortiz",
+  avatar: "/leoMattioli.webp",
   posts: 10,
-  followers: 842,
+  followers: 999,
   following: 163,
 };

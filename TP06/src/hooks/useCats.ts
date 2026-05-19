@@ -3,9 +3,9 @@ import axios from "axios";
 import type { Post } from "../types";
 
 const FAKE_USERNAMES = [
-  "miau_lover", "gatito99", "cat_world", "felino_arte",
-  "purrfect", "whiskers", "kitty_gram", "gato_lindo",
-  "meow_daily", "catsofig"
+   "Gregory", "Einstein___", "felino_chad",
+  "Gribsman", "Bataaaa", "El_Syrupppp", "Cabo_Gustavo",
+  "CalaMortizzzzzz", "suculento666"
 ];
 
 const FAKE_CAPTIONS = [
@@ -32,7 +32,7 @@ export const useCats = () => {
     const fetchCats = async () => {
       try {
         const response = await axios.get(
-          "https://api.thecatapi.com/v1/images/search?limit=10"
+          "https://api.thecatapi.com/v1/images/search?limit=12"
         );
         const fetchedPosts: Post[] = response.data.map(
           (cat: { id: string; url: string }, index: number) => ({
@@ -40,7 +40,7 @@ export const useCats = () => {
             imageUrl: cat.url,
             username: FAKE_USERNAMES[index % FAKE_USERNAMES.length],
             caption: FAKE_CAPTIONS[index % FAKE_CAPTIONS.length],
-            likes: Math.floor(Math.random() * 900) + 100,
+            likes: Math.floor(Math.random() * 900),
             date: new Date(
               Date.now() - Math.random() * 7 * 24 * 60 * 60 * 1000
             ).toLocaleDateString("es-AR"),

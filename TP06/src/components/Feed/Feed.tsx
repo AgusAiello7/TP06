@@ -1,17 +1,25 @@
 import type { Post } from '../../types'
-import PostCard from '../Feed/PostCard'
-import styles from '../Feed/Feed.module.css'
+import PostCard from './PostCard'
+import styles from './Feed.module.css'
 
 interface FeedProps {
   posts: Post[]
+  likedIds: Set<string>
+  onToggleLike: (postId: string) => void
   onSelectPost: (post: Post) => void
 }
 
-const Feed = ({ posts, onSelectPost }: FeedProps) => {
+const Feed = ({ posts, likedIds, onToggleLike, onSelectPost }: FeedProps) => {
   return (
     <section className={styles.feed}>
       {posts.map((post) => (
-        <PostCard key={post.id} post={post} onSelect={onSelectPost} />
+        <PostCard
+          key={post.id}
+          post={post}
+          liked={likedIds.has(post.id)}
+          onToggleLike={onToggleLike}
+          onSelect={onSelectPost}
+        />
       ))}
     </section>
   )
