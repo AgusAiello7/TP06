@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Post } from "../types";
+import type { Post } from "../types";
 
 const FAKE_USERNAMES = [
   "miau_lover", "gatito99", "cat_world", "felino_arte",
