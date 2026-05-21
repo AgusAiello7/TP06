@@ -2,10 +2,10 @@ import styles from './Navbar.module.css'
 
 interface NavbarProps {
   activeView: 'feed' | 'profile'
-  onNavigate: (view: 'feed' | 'profile') => void
+  onNavigate: (view: 'feed' | 'profile') => void // onNavigate es una función que se llama cuando el usuario hace clic en un elemento de navegación para cambiar la vista.
 }
 
-const Navbar = ({ activeView: _activeView, onNavigate }: NavbarProps) => {
+const Navbar = ({ activeView: _activeView, onNavigate }: NavbarProps) => { // el componente Navbar recibe dos props: activeView que indica la vista (feed o profile) y onNavigate que es una función para cambiar la vista activa 
   return (
     <header className={styles.navbar}>
       <div className={styles.inner}>

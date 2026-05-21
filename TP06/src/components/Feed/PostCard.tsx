@@ -9,7 +9,7 @@ interface PostCardProps {
 }
 
 const PostCard = ({ post, liked, onToggleLike, onSelect }: PostCardProps) => {
-  const likesCount = liked ? post.likes + 1 : post.likes
+  const likesCount = liked ? post.likes + 1 : post.likes // si el post ya está marcado como "me gusta" se muestra el número de "me gusta" original más uno. Si no está marcado como "me gusta" se muestra el número de "me gusta" original sin cambios.
 
   return (
     <article className={styles.card}>
@@ -50,7 +50,7 @@ const PostCard = ({ post, liked, onToggleLike, onSelect }: PostCardProps) => {
       </div>
 
       <div className={styles.info}>
-        <span className={styles.likes}>{likesCount.toLocaleString('es-AR')} me gusta</span>
+        <span className={styles.likes}>{likesCount} me gusta</span> 
         <p className={styles.caption}>
           <strong>{post.username}</strong> {post.caption}
         </p>
