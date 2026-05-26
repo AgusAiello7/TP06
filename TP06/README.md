@@ -126,8 +126,18 @@ Se utiliza **Axios** dentro de un `useEffect` en el hook personalizado `useCats.
 
 ```ts
 useEffect(() => {
-  axios.get('https://api.thecatapi.com/v1/images/search?limit=12')
-    .then(res => { /* mapear y guardar en estado */ })
+  const fetchCats = async () => {
+    try {
+      const imagenes = await axios.get("https://api.thecatapi.com/v1/images/search?limit=12&mime_types=gif,jpg,png")
+      const avatares = await axios.get("https://api.thecatapi.com/v1/images/search?limit=12&mime_types=gif,jpg,png&size=small")
+      // mapear respuesta y guardar en estado con setPosts
+    } catch (err) {
+      setError("Error al cargar las imágenes")
+    } finally {
+      setLoading(false)
+    }
+  }
+  fetchCats()
 }, [])
 ```
 

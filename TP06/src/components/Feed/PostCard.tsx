@@ -16,7 +16,7 @@ const PostCard = ({ post, liked, onToggleLike, onSelect }: PostCardProps) => {
       <div className={styles.cardHeader}>
         <div className={styles.headerLeft}>
           <img
-              src={`https://api.thecatapi.com/v1/images/search?size=small&${post.username}`}
+            src={post.avatarUrl}
             alt={post.username}
             className={styles.avatar}
           />

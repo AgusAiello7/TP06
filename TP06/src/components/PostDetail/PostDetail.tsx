@@ -27,7 +27,7 @@ const PostDetail = ({ post, liked, onToggleLike, onClose }: PostDetailProps) => 
 
             <div className={styles.header}>
             <img
-              src={`https://api.thecatapi.com/v1/images/search?size=small&${post.username}`}
+              src={post.avatarUrl}
               alt={post.username}
               className={styles.avatar}
             />
