@@ -15,14 +15,14 @@ const navItems = [
   { label: 'Notification', emoji: '🔔', view: null      },
 ] as const
 
-const Sidebar = ({ user, activeView, onNavigate }: SidebarProps) => {
-  return (
+const Sidebar = ({ user, activeView, onNavigate }: SidebarProps) => { // Recibe el usuario con sus datos, la vista activa y una función para manejar la navegación entre vistas. 
+    return (
     <aside className={styles.sidebar}>
 
       <div className={styles.profile}>
         <button
           className={styles.avatarBtn}
-          onClick={() => onNavigate('profile')}
+          onClick={() => onNavigate('profile')} // Al hacer clic en el avatar, muestra la vista de perfil
           aria-label="Ver mi perfil"
         >
           <img
@@ -64,7 +64,7 @@ const Sidebar = ({ user, activeView, onNavigate }: SidebarProps) => {
       </nav>
 
     </aside>
-  )
+    )
 }
 
 export default Sidebar

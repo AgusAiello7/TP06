@@ -2,8 +2,7 @@
 
 Copia de Instagram desarrollado en React + TypeScript, que obtiene imágenes de gatos desde [The Cat API](https://thecatapi.com/) y las muestra en formato de red social.
 
-**Diseño de Figma utilizado como referencia:**
-https://www.figma.com/community/file/1004033523744290376
+
 
 ---
 
@@ -22,7 +21,7 @@ npm run dev
 src/
 ├── components/
 │   ├── NavBar/         → Barra de navegación superior
-│   ├── SideBar/        → Panel lateral con perfil y menú
+│   ├── SideBar/        → Barra lateral con perfil y menú
 │   ├── Stories/        → Fila de historias
 │   ├── Feed/           → Lista de publicaciones
 │   ├── PostDetail/     → Modal de publicación individual
@@ -42,51 +41,52 @@ src/
 ## Componentes
 
 ### `Navbar`
-Barra superior fija. Muestra el logo de la app, un campo de búsqueda y botones de acción. El logo es clickeable y navega al feed.
+Barra superior fija. Muestra el logo de la app, un campo de búsqueda y botones de acción no funcionales. El logo "Catsgram" es clickeable y navega al feed.
 
-**Props:** `activeView`, `onNavigate`
+**sus Props son:** `activeView`, `onNavigate`
 
 ### `Sidebar`
-Panel lateral izquierdo. Muestra la foto de perfil del usuario logueado (clickeable para ir al perfil), nombre, stats de seguidores/seguidos y el menú de navegación principal.
+Panel lateral izquierdo. Muestra la foto de perfil del usuario logueado (clickeable para ir al perfil), nombre, stats de seguidores y likes y el menú de navegación principal (Home). El resto de botones son no funcionales.
 
-**Props:** `user`, `activeView`, `onNavigate`
+**sus Props son:** `user`, `activeView`, `onNavigate`
 
 ### `Stories`
 Fila horizontal con scroll de historias. Mapea los posts cargados desde la API y renderiza un `StoryCircle` por cada uno.
 
-**Props:** `posts`
+**sus Props son:** `posts`
 
 ### `StoryCircle`
 Círculo individual de historia con borde parecido al de instagram, imagen del gato y username debajo.
 
-**Props:** `username`, `imageUrl`
+**sus Props son:** `username`, `imageUrl`
 
 ### `Feed`
 Contenedor del feed. Recibe el array de posts y los mapea dinámicamente con `PostCard`. No escribe ninguna publicación manualmente.
 
-**Props:** `posts`, `likedIds`, `onToggleLike`, `onSelectPost`
+**sus Props son:** `posts`, `likedIds`, `onToggleLike`, `onSelectPost`
 
 ### `PostCard`
-Tarjeta individual de publicación. Muestra avatar del usuario, imagen del gato, botones de interacción (like, comentar, compartir, guardar), contador de likes y caption. El like modifica el estado global.
+Tarjeta individual de publicación. Muestra avatar del usuario, imagen del gato, botones de interacción (like, comentar, compartir, guardar), contador de likes y caption. El estado del like se puede modificar.
 
-**Props:** `post`, `liked`, `onToggleLike`, `onSelect`
+**sus Props son:** `post`, `liked`, `onToggleLike`, `onSelect`
 
 ### `PostDetail`
-Modal que se abre al seleccionar una publicación. Muestra la imagen ampliada, nombre de usuario, caption, comentarios simulados, botones de interacción y cantidad de likes. Se cierra clickeando fuera del modal o en el botón ✕.
+Es un Modal que se abre al seleccionar una publicación. Muestra la imagen ampliada, nombre de usuario, caption, comentarios, botones de interacción no funcionales (excepto el like) y cantidad de likes. Se cierra clickeando fuera del modal o en el botón ✕.
 
-**Props:** `post`, `liked`, `onToggleLike`, `onClose`
+**sus Props son:** `post`, `liked`, `onToggleLike`, `onClose`
 
 ### `Profile`
-Vista de perfil del usuario logueado. Muestra foto, username, stats (publicaciones, seguidores, seguidos), nombre completo, bio, botón de editar perfil y una grilla 3x3 con todas las publicaciones. Cada imagen de la grilla abre el `PostDetail`.
+Vista de perfil del usuario logueado. Muestra foto, username, stats (publicaciones, seguidores, seguidos), nombre completo, biografia, botón de editar perfil (no funcional) y una grilla 3x3 con todas las publicaciones. Cada imagen de la grilla redirige a `PostDetail`.
 
-**Props:** `user`, `posts`, `onSelectPost`
+**sus Props son:** `user`, `posts`, `onSelectPost`
 
 ---
 
-## Por qué esta componentización
+## Por qué esta componentización y responsabilidad de cada componente 
 
-Cada componente tiene una responsabilidad única y bien definida. `Feed` no sabe cómo se ve una tarjeta, solo sabe mapear. `PostCard` no sabe nada del estado global, solo recibe props y llama callbacks. `PostDetail` no maneja su propio estado de likes para evitar inconsistencias con el feed. Esta separación hace que cada pieza sea reutilizable e independiente.
+Para desarrollar la aplicación se crearon varios componentes con el objetivo de separar las distintas partes de la interfaz y mantener el código más organizado. Los principales componentes fueron Navbar, Sidebar, Feed, PostCard, PostDetail, Stories y Profile. Cada uno cumple una función específica dentro de la aplicación. Por ejemplo, Navbar muestra la barra superior, Sidebar contiene la información del usuario emulado y opciones de navegación, Feed se encarga de recorrer y mostrar todas las publicaciones, mientras que PostCard representa cada publicación individual dentro del feed. Además, PostDetail muestra una publicación seleccionada con información ampliada y Profile representa el perfil del usuario logueado.
 
+La aplicación se dividió de esta manera para evitar tener toda la lógica y el diseño concentrados en un solo archivo. Esto hace que el proyecto sea más fácil de entender, mantener y reutilizar. Por ejemplo, si se quisiera cambiar solamente el diseño de una publicación, alcanza con modificar PostCard sin tocar el resto de la aplicación. También permite reutilizar componentes en distintas partes del proyecto sin repetir código.
 ---
 
 ## Comunicación entre componentes mediante props
@@ -116,7 +116,7 @@ El estado global vive en `App.tsx` y baja por props:
 - `likedIds` — conjunto de IDs de posts likeados por el usuario
 
 ### `useEffect`
-Usado en `useCats.ts` para ejecutar la petición a la API al montar el componente. El array de dependencias vacío `[]` garantiza que se ejecuta una sola vez al cargar la página.
+Lo usamos en `useCats.ts` para ejecutar la petición a la API al iniciar el componente. El array de dependencias vacío **UseEffect`[]`** garantiza que se ejecuta una sola vez al cargar la página.
 
 ---
 
@@ -135,9 +135,12 @@ Cada imagen devuelta por la API se transforma en un objeto `Post` con username, 
 
 ---
 
+**Diseño de Figma utilizado como referencia:**
+https://www.figma.com/community/file/1004033523744290376
+
 ## Visualización individual de publicaciones
 
-Se resolvió mediante un **modal** (`PostDetail`). Al hacer click en la imagen o en el botón de comentarios de cualquier `PostCard`, se ejecuta `setSelectedPost(post)` en `App.tsx`. Cuando `selectedPost` no es `null`, el modal se renderiza sobre el contenido. Clickear fuera del modal o en ✕ ejecuta `setSelectedPost(null)` y lo cierra.
+Se resolvió mediante un **modal** (`PostDetail`). Al hacer click en la imagen o en el botón de comentarios de cualquier `PostCard`, se ejecuta `setSelectedPost(post)` en `App.tsx`. Cuando `selectedPost` no es `null`, el modal se renderiza sobre el contenido. Clickear fuera del modal o en ✕ ejecuta `setSelectedPost(null)` y por eso se cierra.
 
 El estado `selectedPost` se maneja con `useState<Post | null>(null)`.
 
@@ -151,7 +154,7 @@ El perfil está definido en `src/data/userData.ts` con datos fijos:
 export const currentUser: User = {
   username: "Señora M",
   fullName: "Facunda Eusebich",
-  bio: "🐱 Amante de los gatos | Y d lor Mortiz",
+  bio: "🐱 Amante de los gatos | Y de los Mortiz",
   avatar: "/leoMattioli.webp",
   posts: 10,
   followers: 999,
@@ -173,7 +176,7 @@ No hay login ni registro. La app simula que el usuario ya está logueado. El per
 
 ---
 
-## Tecnologías
+## Tecnologías que usamos
 
 - React 19 + TypeScript
 - Vite

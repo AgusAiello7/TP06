@@ -7,7 +7,7 @@ interface ProfileProps {
   onSelectPost: (post: Post) => void
 }
 
-const Profile = ({ user, posts, onSelectPost }: ProfileProps) => {
+const Profile = ({ user, posts, onSelectPost }: ProfileProps) => { // Recibe el usuario con sus datos y hace una función para manejar la selección de una publicación
   return (
     <div className={styles.profile}>
 
@@ -44,16 +44,16 @@ const Profile = ({ user, posts, onSelectPost }: ProfileProps) => {
 
       <div className={styles.divider} />
 
-      <div className={styles.tabs}>
-        <button className={styles.tabActive}>▦ PUBLICACIONES</button>
+      <div className={styles.tabs}> 
+        <button className={styles.tabActive}> PUBLICACIONES</button>
       </div>
 
       <div className={styles.grid}>
-        {posts.map((post) => (
+        {posts.map((post) => ( // mapea las publicaciones del usuario y las muestra en una cuadrícula. Cada publicación es un botón que llama a la función onSelectPost con la publicación seleccionada.
           <button
             key={post.id}
             className={styles.gridItem}
-            onClick={() => onSelectPost(post)}
+            onClick={() => onSelectPost(post)} 
             aria-label={post.caption}
           >
             <img src={post.imageUrl} alt={post.caption} className={styles.gridImage} />

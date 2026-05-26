@@ -25,14 +25,14 @@ const PostDetail = ({ post, liked, onToggleLike, onClose }: PostDetailProps) => 
 
         <div className={styles.infoSection}>
 
-          <div className={styles.header}>
+            <div className={styles.header}>
             <img
-              src={`https://api.dicebear.com/7.x/adventurer/svg?seed=${post.username}`}
+              src={`https://api.thecatapi.com/v1/images/search?size=small&${post.username}`}
               alt={post.username}
               className={styles.avatar}
             />
             <span className={styles.username}>{post.username}</span>
-          </div>
+            </div>
 
           <div className={styles.comments}>
             <div className={styles.caption}>

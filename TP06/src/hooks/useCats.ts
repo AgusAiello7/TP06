@@ -28,13 +28,13 @@ export const useCats = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
+  useEffect(() => { 
     const fetchCats = async () => { // fetchCatses una función asincrónica que se encargará de realizar la solicitud a la API para obtener las imágenes de gatos. Esta función se ejecutará una vez que la app inicie.
       try {
-        const response = await axios.get(
+        const imagenes = await axios.get( 
           "https://api.thecatapi.com/v1/images/search?limit=12"
         );
-        const fetchedPosts: Post[] = response.data.map( // la respuesta de la API para se transforma en un array de objetos Post que se ajusten a la estructura definida en el tipo Post. 
+        const fetchedPosts: Post[] = imagenes.data.map( // la respuesta de la API para se transforma en un array de objetos Post que se ajusten a la estructura definida en el tipo Post. 
           (cat: { id: string; url: string }, index: number) => ({
             id: cat.id,
             imageUrl: cat.url,
@@ -43,7 +43,7 @@ export const useCats = () => {
             likes: Math.floor(Math.random() * 900), // se asigna un número aleatorio de "me gusta" entre 0 y 899 para cada publicación.
             date: new Date(
               Date.now() - Math.random() * 7 * 24 * 60 * 60 * 1000 // se asigna una fecha aleatoria dentro de la última semana para cada publicación. Es una funcnción obtenida de google.
-            ).toLocaleDateString("es-AR"), //
+            ).toLocaleDateString("es-AR"), // se formatea la fecha en formato de fecha local para Argentina.
             comments: FAKE_COMMENTS,
           })
         );
@@ -55,7 +55,7 @@ export const useCats = () => {
       }
     };
 
-    fetchCats();
+    fetchCats(); 
   }, []);
 
   return { posts, loading, error };
